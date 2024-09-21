@@ -29,8 +29,9 @@ const port = process.env.PORT || 5000;
 
 app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(cors({
-  origin: 'https://AKASH1948.github.io'  // Your GitHub Pages URL
+  origin: 'https://akash1948.github.io/SNAPCONNECT/'  // Your GitHub Pages URL
 }));
+
 
 app.use(bodyParser.json());
 const cors = require('cors');
