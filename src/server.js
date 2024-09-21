@@ -31,9 +31,18 @@ const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 const cors = require('cors');
-app.use(cors({
-  origin: ['http://localhost:3000', 'https://akash1948.github.io']  // Allow both localhost and GitHub Pages
-}));
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || origin === 'http://localhost:3000' || origin === 'https://akash1948.github.io') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
+
 
 
 // Serve static files for uploaded images
