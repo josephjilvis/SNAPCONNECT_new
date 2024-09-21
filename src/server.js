@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 const cors = require('cors');
 const corsOptions = {
   origin: function (origin, callback) {
-    if (!origin || origin === 'http://localhost:3000' || origin === 'https://akash1948.github.io') {
+    if (!origin ||  origin === 'https://akash1948.github.io') {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
