@@ -27,17 +27,14 @@ const upload = multer({ storage: storage });
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors({ origin: 'http://localhost:3000' }));
-app.use(cors({
-  origin: 'https://akash1948.github.io/'  // Your GitHub Pages URL
-}));
 
 
 app.use(bodyParser.json());
 const cors = require('cors');
 app.use(cors({
-  origin: 'https://AKASH1948.github.io'  // Your GitHub Pages URL
+  origin: ['http://localhost:3000', 'https://akash1948.github.io']  // Allow both localhost and GitHub Pages
 }));
+
 
 // Serve static files for uploaded images
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
