@@ -1,0 +1,46 @@
+.dashboard-container {
+  padding: 20px;
+  background-color: #f8f8f8;
+  text-align: center;
+  border: 2px solid #ff0000;
+}
+
+h2 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.dashboard-options {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.dashboard-option {
+  cursor: pointer;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  width: 200px;
+  margin: 10px;
+  border: 2px solid #ff0000;
+}
+
+.dashboard-option:hover {
+  background-color: #f0f0f0;
+}
+
+.dashboard-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #ff0000; /* Red color for the theme */
+}
+
+p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}

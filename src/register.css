@@ -1,0 +1,70 @@
+/* Registration Page CSS */
+.container {
+    max-width: 400px;
+    width: 100%;
+    padding: 2em;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  h2 {
+    margin-bottom: 1em;
+    color: #333;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form label {
+    margin-bottom: 0.5em;
+    font-weight: bold;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 0.75em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 0.75em;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  p {
+    margin-top: 1em;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Registration */
+  @media (max-width: 480px) {
+    .container {
+      padding: 1em;
+    }
+  }
+  

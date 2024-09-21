@@ -1,0 +1,107 @@
+.my-bookings-container {
+  padding: 20px;
+  background-color: white;
+  color: black;
+  width: 50rem;
+  margin-top: 10rem;
+  border: 2px solid red; 
+
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: red;
+}
+
+.booking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+}
+
+.booking-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  border: 2px solid red !important; /* Added !important for testing */
+}
+
+.booking-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 20px; /* Add padding for spacing */
+  
+}
+
+.booking-info h2 {
+  color: red;
+  font-size: 2rem; /* Increased size for better readability */
+  margin-bottom: 10px;
+}
+
+.booking-info p {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem; /* Increased font size for better readability */
+}
+
+.booking-info p svg {
+  margin-right: 10px;
+  color: red;
+}
+
+.photographer-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
+  margin-left: 30px;
+}
+
+.photographer-image img {
+  width: 200px; /* Increased image size */
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid red;
+}
+
+.booking-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+.no-bookings-message {
+  text-align: center;
+  font-size: 1.5rem;
+  color: red;
+}
