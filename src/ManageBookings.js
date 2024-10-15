@@ -8,33 +8,33 @@ const ManageBookings = () => {
   // Fetch the photographer's bookings
   useEffect(() => {
     const fetchBookings = async () => {
-        const photographerId = localStorage.getItem('photographerId');
-        const authToken = localStorage.getItem('token');
+      const photographerId = localStorage.getItem('photographerId');
+      const authToken = localStorage.getItem('token');
       
-        if (!photographerId) {
-          console.error('Photographer ID not found in local storage');
-          return;
+      if (!photographerId) {
+        console.error('Photographer ID not found in local storage');
+        return;
+      }
+      
+      try {
+        console.log('Fetching bookings with token:', authToken); // Debugging log
+        const response = await fetch(`http://localhost:5000/photographer-bookings/${photographerId}`, {
+          headers: {
+            'Authorization': `Bearer ${authToken}`,
+          },
+        });
+      
+        if (response.ok) {
+          const data = await response.json();
+          setBookings(data); // Store bookings
+        } else {
+          console.log('No bookings found or unauthorized:', response.status);
+          setBookings([]);
         }
-      
-        try {
-          console.log('Fetching bookings with token:', authToken); // Debugging log
-          const response = await fetch(`http://localhost:5000/photographer-bookings/${photographerId}`, {
-            headers: {
-              'Authorization': `Bearer ${authToken}`,
-            },
-          });
-      
-          if (response.ok) {
-            const data = await response.json();
-            setBookings(data); // Store bookings
-          } else {
-            console.log('No bookings found or unauthorized:', response.status);
-            setBookings([]);
-          }
-        } catch (error) {
-          console.error('Error fetching bookings:', error);
-        }
-      };
+      } catch (error) {
+        console.error('Error fetching bookings:', error);
+      }
+    };
 
     fetchBookings();
   }, []);
@@ -100,7 +100,7 @@ const ManageBookings = () => {
                     </button>
                   </div>
                 )}
-                {booking.status !== 'Pending' && (
+                {booking.status !== 'Pending' && booking.status !== 'Cancelled' && (
                   <button className="delete-button" onClick={() => handleStatusUpdate(booking._id, 'Cancelled')}>
                     <FaTrashAlt /> Cancel
                   </button>

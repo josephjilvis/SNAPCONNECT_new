@@ -1,13 +1,16 @@
 .dashboard-container {
-  padding: 20px;
+  padding: 40px; /* Increased padding for more space */
   background-color: #f8f8f8;
   text-align: center;
-  border: 2px solid #ff0000;
+  border: 3px solid #ff0000; /* Slightly thicker border */
+  max-width: 1200px; /* Set a maximum width for larger screens */
+  margin: 0 auto; /* Center the container */
 }
 
 h2 {
-  margin-bottom: 30px;
+  margin-bottom: 40px; /* Increased margin for more spacing */
   color: #333;
+  font-size: 2.5rem; /* Increased font size for better visibility */
 }
 
 .dashboard-options {
@@ -19,14 +22,14 @@ h2 {
 .dashboard-option {
   cursor: pointer;
   text-align: center;
-  padding: 20px;
+  padding: 30px; /* Increased padding for larger clickable area */
   border-radius: 10px;
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Increased shadow for better depth */
   transition: background-color 0.3s ease;
-  width: 200px;
-  margin: 10px;
-  border: 2px solid #ff0000;
+  width: 250px; /* Increased width of options */
+  margin: 20px; /* Increased margin for more spacing between options */
+  border: 2px solid #ff0000; /* Maintained border thickness */
 }
 
 .dashboard-option:hover {
@@ -34,13 +37,13 @@ h2 {
 }
 
 .dashboard-icon {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: 3rem; /* Increased icon size */
+  margin-bottom: 15px; /* Increased space below the icon */
   color: #ff0000; /* Red color for the theme */
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: 1.5rem; /* Increased font size for text */
   font-weight: bold;
   color: #333;
 }

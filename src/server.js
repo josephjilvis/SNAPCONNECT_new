@@ -7,11 +7,14 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+console.log('MongoDB URI:', process.env.MONGODB_URI);
+
 
 const User = require('./UserModel');
 const Booking = require('./BookingModel');
 const Photographer = require('./PhotographerModel');
 const authenticate = require('./middleware/authenticate'); // Authentication middleware
+const { use } = require('bcrypt/promises');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -32,7 +35,13 @@ app.use(bodyParser.json());
 
 const corsOptions = {
   origin: function (origin, callback) {
-    if (!origin || origin === 'http://localhost:3000' || origin === 'https://akash1948.github.io') {
+    // Allow requests from specific origins
+    const allowedOrigins = [
+      'http://localhost:3000',
+      'https://akash1948.github.io' // Add other allowed origins as necessary
+    ];
+
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -40,6 +49,7 @@ const corsOptions = {
   },
 };
 
+// Use CORS middleware
 app.use(cors(corsOptions));
 
 
@@ -71,16 +81,30 @@ app.post('/register', async (req, res) => {
 
 // Route for user login
 app.post('/login', async (req, res) => {
+  console.log('Login attempt with:', req.body);
   const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required.' });
+  }
+
   try {
     const user = await User.findOne({ email });
+    console.log('User found:', user);
     if (!user) return res.status(400).json({ error: 'User not found' });
+
+    console.log('Password stored in DB:', user.password);
+    console.log('Password provided:', password);
+
     const isMatch = await bcrypt.compare(password, user.password);
+    console.log('Password match:', isMatch);
     if (!isMatch) return res.status(400).json({ error: 'Invalid credentials' });
+
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.json({ token });
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Error during login:', error);
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -245,7 +269,8 @@ app.patch('/update-booking-status/:id', authenticate, async (req, res) => {
   if (!token) return res.status(401).json({ error: 'No token provided' });
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    if (!status || !['Accepted', 'Rejected'].includes(status)) return res.status(400).json({ error: 'Invalid status' });
+    if (!status || !['Accepted', 'Rejected', 'Pending', 'Cancelled'].includes(status)) return res.status(400).json({ error: 'Invalid status' });
+
     const booking = await Booking.findById(id);
     if (!booking) return res.status(404).json({ error: 'Booking not found' });
     booking.status = status;
@@ -254,6 +279,32 @@ app.patch('/update-booking-status/:id', authenticate, async (req, res) => {
   } catch (error) {
     console.error('Error verifying token or updating booking status:', error.message);
     return res.status(401).json({ error: 'Invalid token or failed to update status' });
+  }
+});
+
+
+
+app.get('/search-photographers', async (req, res) => {
+  const { minPrice, maxPrice, location, name } = req.query;
+
+  try {
+    // Build the query object for search and filter
+    const query = {};
+
+    // Search by name or location
+    if (location) query.location = new RegExp(location, 'i'); // case-insensitive search
+    if (name) query.name = new RegExp(name, 'i'); // case-insensitive search
+
+    // Filter by price range
+    if (minPrice) query.price = { ...query.price, $gte: Number(minPrice) };
+    if (maxPrice) query.price = { ...query.price, $lte: Number(maxPrice) };
+
+    // Fetch photographers based on the query
+    const photographers = await Photographer.find(query);
+    res.json(photographers);
+  } catch (error) {
+    console.error('Error fetching photographers:', error);
+    res.status(500).json({ error: 'Failed to fetch photographers' });
   }
 });
 
@@ -269,6 +320,8 @@ app.get('/photographer-bookings/:id', authenticate, async (req, res) => { // Add
     res.status(500).json({ error: 'Failed to fetch bookings' });
   }
 });
+
+
 
 
 // Start the server

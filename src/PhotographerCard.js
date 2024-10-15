@@ -1,34 +1,8 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
-//   const handleLocationClick = () => {
-//     const query = encodeURIComponent(location);
-//     const mapUrl = `https://www.google.com/maps/search/?api=1&query=${query}`;
-//     window.open(mapUrl, '_blank');
-//   };
-
-//   const handleBookClick = () => {
-  
-//     alert(`Booking ${name}`);
-//   };
-
-//   return (
-//     <div style={styles.cardContainer}>
-//       <img src={image} alt={`${name}`} style={styles.image} />
-//       <h3>{name}</h3>
-//       <p style={styles.location} onClick={handleLocationClick}>
-//         {location}
-//       </p>
-//       <p>Price: ${price} per day</p>
-//       <p>Contact: <a href={`mailto:${contact}`}>{contact}</a></p>
-//       <button style={styles.bookButton} onClick={handleBookClick}>
-//         Book
-//       </button>
-//     </div>
-//   );
-// };
-const PhotographerCard = ({ id, image, name, location, price, contact }) => {
+const PhotographerCard = ({ id, image, name, location, price, contact, portfolio }) => {
   const navigate = useNavigate();
 
   const handleLocationClick = () => {
@@ -50,12 +24,18 @@ const PhotographerCard = ({ id, image, name, location, price, contact }) => {
       </p>
       <p>Price: ${price} per day</p>
       <p>Contact: <a href={`mailto:${contact}`}>{contact}</a></p>
+      {portfolio && (
+        <p>
+          Portfolio: <a href={portfolio} target="_blank" rel="noopener noreferrer">{portfolio}</a>
+        </p>
+      )}
       <button style={styles.bookButton} onClick={handleBookClick}>
         Book
       </button>
     </div>
   );
 };
+
 const styles = {
   cardContainer: {
     width: '300px',
@@ -66,6 +46,7 @@ const styles = {
     textAlign: 'center',
     backgroundColor: '#fff',
     border: '1px solid #d32f2f',
+    overflow: 'hidden', // Ensure content stays within the card
   },
   image: {
     width: '100%',
@@ -82,12 +63,12 @@ const styles = {
     padding: '10px 20px',
     backgroundColor: '#007bff',
     color: '#fff',
-    border: '1px',
+    border: 'none', // Changed to 'none' for cleaner look
     borderRadius: '5px',
     cursor: 'pointer',
     fontSize: '16px',
-    
   },
 };
 
 export default PhotographerCard;
+

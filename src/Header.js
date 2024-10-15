@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { FaHome, FaUser, FaSignOutAlt } from 'react-icons/fa'; // Import the logout icon
+import { FaHome, FaUser, FaSignOutAlt, FaSearch } from 'react-icons/fa'; // Import the search icon
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
@@ -7,7 +8,6 @@ const Header = () => {
 
   const handleIconClick = (path) => {
     if (path === 'logout') {
-     
       localStorage.removeItem('authToken');
       navigate('/login'); // Redirect to the login page
     } else {
@@ -30,6 +30,11 @@ const Header = () => {
           style={styles.icon}
           onClick={() => handleIconClick('/my-bookings')}
           title="My Bookings"
+        />
+        <FaSearch
+          style={styles.icon}
+          onClick={() => handleIconClick('/search')}
+          title="Search"
         />
         <FaSignOutAlt
           style={styles.icon}
@@ -58,7 +63,6 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     border: '2px solid #d32f2f', 
-   
   },
   titleContainer: {
     flex: 1,
@@ -83,3 +87,4 @@ const styles = {
 };
 
 export default Header;
+

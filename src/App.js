@@ -12,6 +12,7 @@ import PhotographerRegister from './PhotoRegg';
 import PhotographerDashboard from './PhotographerDashboard';
 import EditProfile from './EditProfile';
 import ManageBookings from './ManageBookings';
+import SearchPage from './SearchPage';
 const App = () => {
   return (
     <Router>
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/photographer-dashboard" element={< PhotographerDashboard/>} />
           <Route path="/edit-profile/:id" element={<EditProfile />} />
           <Route path="/manage-bookings" element={<ManageBookings />} />
+          <Route path="/search" element={<SearchPage />} />
         </Routes>
       </div>
     </Router>

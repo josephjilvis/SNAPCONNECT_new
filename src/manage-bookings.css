@@ -1,68 +1,70 @@
 .manage-bookings-container {
-    padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-  
-  .page-title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .booking-list {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .booking-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .booking-info {
-    flex: 1;
-  }
-  
-  .booking-actions {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .status-buttons {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .status-button {
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    color: #fff;
-    margin-bottom: 5px;
-  }
-  
-  .accept-button {
-    background-color: #4caf50;
-  }
-  
-  .reject-button {
-    background-color: #f44336;
-  }
-  
-  .delete-button {
-    background-color: #f44336;
-    color: #fff;
-  }
-  
-  .no-bookings-message {
-    text-align: center;
-  }
-  
+  padding: 30px; /* Increased padding for more space inside the container */
+  width: 700px; /* Increased max-width for a larger container */
+  margin: 0 auto;
+  background-color: #fff; /* Set background color to white */
+  border: 2px solid #ff0000; /* Set border color to red */
+  border-radius: 8px; /* Optional: Add rounded corners */
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.booking-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.booking-info {
+  flex: 1;
+}
+
+.booking-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.status-button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.accept-button {
+  background-color: #4caf50;
+}
+
+.reject-button {
+  background-color: #f44336;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.no-bookings-message {
+  text-align: center;
+}

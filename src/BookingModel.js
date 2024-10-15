@@ -6,7 +6,7 @@ const bookingSchema = new mongoose.Schema({
   bookingDate: { type: Date, required: true },
   location: { type: String, required: true },
   rate: { type: Number, required: true },
-  status: { type: String, enum: ['Pending', 'Accepted', 'Rejected'], default: 'Pending' }, // Added status field
+  status: { type: String, enum: ['Pending', 'Accepted', 'Rejected',`Cancelled`], default: 'Pending' }, // Added status field
 });
 
 
