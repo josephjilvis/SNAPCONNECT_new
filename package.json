@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "node express and react testing",
   "private": true,
-  "homepage": "https://AKASH1948.github.io/SNAPCONNECT",
+  "homepage": "https://snapconnect-new-xq78.vercel.app/",
   "main": "index.js",
   "engines": {
     "node": "18.x"
